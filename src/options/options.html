@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="options.css" type="text/css"> 
+  <script type="text/javascript" src="../common/preferences.js"></script>
+  <script type="text/javascript" src="dom_utils.js"></script>
+
+  <script type="text/javascript">
+    function getCurrentScriptElm() {
+      var elms = document.getElementsByTagName('script');
+      return elms[elms.length - 1];
+    }
+
+    function MSG(id, opt_args) {
+      document.write(_getMsg(id, opt_args));
+      var elm = getCurrentScriptElm();
+      elm.parentNode.removeChild(elm);
+    }
+
+    function MSG_PREV(propName, id, opt_args) {
+      var elm = getCurrentScriptElm();
+      elm.previousElementSibling[propName] = _getMsg(id, opt_args);
+      elm.parentNode.removeChild(elm);
+    }
+
+    document.title = _getMsg('options_title');
+  </script>
+</head>
+
+<body onload="restore_preferences()">
+  <a id="logo-link" href="/options/options.html">
+    <img id="logo-img" src="/images/32x32.png">
+    <script>MSG_PREV('title', 'logo_tooltip')</script>
+  </a>
+
+  <h2><script>MSG('options_title')</script></h2>
+  <div class="clear-both"></div>
+
+  <!--
+    Links
+  -->
+  <div id="links">
+    <a href="http://www.w3schools.com/jsref/jsref_obj_regexp.asp" target="_blank"><script>MSG('link_regexp_docs')</script></a>
+    | <a href="http://groups.google.com/group/personalizedweb" target="_blank"><script>MSG('link_forum')</script></a>
+    | <a href="https://chrome.google.com/extensions/detail/plcnnpdmhobdfbponjpedobekiogmbco" target="_blank"><script>MSG('link_gallery')</script></a>
+  </div>
+
+  <!--
+    Rule Template
+  -->
+  <div id="rule-template" class="rule-template collapsed" style="display: none;">
+    <input class="rule-enabled" type="checkbox">
+    <script>MSG_PREV('title', 'rule_enabler_tooltip')</script>
+
+    <div class="rule-header">
+      <div class="rule-expander left">
+        <span class="rule-name"></span>
+        <span class="rule-url-pattern"></span>
+      </div>
+      <div class="right">
+        <span class="rule-options"><a><script>MSG('popup_menu_link')</script></a></span>
+      </div>
+      <div class="clear-both"></div>
+    </div>
+
+    <div class="expanded-block">
+      <div>
+        <!-- Rule name: -->
+        <span>
+          <script>MSG('rule_name_label')</script>
+          <input type="text" class="input-rule-name">
+        </span>
+      </div>
+      
+      <div>
+        <!-- Match URLs: -->
+        <span>
+          <script>MSG('match_urls_label')</script>
+          <input type="text" class="input-url-pattern">
+          <script>MSG_PREV('title', 'regexp_input_tooltip')</script>
+        </span>
+        <!-- Exclude URLs: -->
+        <span>
+          <script>MSG('exclude_urls_label')</script>
+          <input type="text" class="input-url-exclude">
+          <script>MSG_PREV('title', 'regexp_input_tooltip')</script>
+        </span>
+      </div>
+
+      <div>
+        <span>
+          <input class="intercept-doc-write" type="checkbox">
+          <script>MSG('intercept_doc_write_label')</script>
+        </span>
+        <script>MSG_PREV('title', 'intercept_doc_write_tooltip')</script>
+      </div>
+
+      <div class="filters-block">
+        <strong><script>MSG('removers_label')</script></strong>
+        <!-- Removers container -->
+        <div class="filters-container"></div>
+        <input type="button" class="add-new-filter">
+        <script>MSG_PREV('value', 'add_new_remover')</script>
+      </div>
+
+      <div class="extra-rule">
+        <div class="left"><script>MSG('add_css_label')</script></div>
+        <div class="right"><textarea class="rule-css"></textarea></div>
+        <div class="clear-both"></div>
+      </div>
+
+      <div class="extra-rule">
+        <div class="left">
+          <script>MSG('add_html_label')</script>
+          <div class="help">
+            <script>MSG('add_html_help')</script>
+          </div>
+        </div>
+        <div class="right"><textarea class="rule-html"></textarea></div>
+        <div class="clear-both"></div>
+      </div>
+
+      <div class="extra-rule">
+        <div class="left">
+          <script>MSG('add_js_label')</script>
+          <div class="help">
+            <script>
+            MSG('add_js_help', [
+              '<a href="http://code.google.com/chrome/extensions/content_scripts.html" target="_blank">',
+              '</a>'
+            ])
+            </script>
+          </div>
+        </div>
+        <div class="right"><textarea class="rule-js"></textarea></div>
+        <div class="clear-both"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="filter-template" class="filter" style="display: none;">
+    <div class="right">
+      <span class="rule-options"><a><script>MSG('popup_menu_link')</script></a></span>
+    </div>
+    <div class="left">
+      <!-- Tag(s): -->
+      <span>
+        <script>MSG('remover_tags_label')</script>
+        <input type="text" class="filter-tags">
+        <script>MSG_PREV('title', 'text_input_tooltip')</script>
+        &amp;
+      </span>
+      <!-- Attribute: -->
+      <span>
+        <script>MSG('remover_attr_label')</script>
+        <input type="text" class="filter-attr">
+        <script>MSG_PREV('title', 'text_input_tooltip')</script>
+        &amp;
+      </span>
+      <!-- Value: -->
+      <span>
+        <script>MSG('remover_value_label')</script>
+        <input type="text" class="filter-value">
+        <script>MSG_PREV('title', 'text_input_tooltip')</script>
+        |
+        <input type="text" class="filter-value-regex">
+        <script>MSG_PREV('title', 'regexp_input_tooltip')</script>
+      </span>
+    </div>
+    <div class="clear-both"></div>
+  </div>
+
+  <!--
+    Global black list
+  -->
+<!--
+  <div id="black-list" class="rule-template collapsed">
+    <div class="rule-expander">
+      <div class="left">zippy image</div>
+      <div class="header">
+        Global Black List
+      </div>
+    </div>
+    <div class="expanded-block">
+      as
+    </div>
+  </div>
+-->
+
+  <!--
+    Rules container
+  -->
+  <div id="rules-container"></div>
+  <div class="clear-both"></div>
+  
+  <div id="footer">
+    <div id="errors"></div>
+    <div>
+      <input type="button" id="add-new-rule">
+      <script>MSG_PREV('value', 'add_new_rule')</script>
+
+      <input type="button" id="load-dumped-rules">
+      <script>MSG_PREV('value', 'load_dumped_rules')</script>
+
+      <input type="button" id="dump-rules">
+      <script>MSG_PREV('value', 'dump_all_rules')</script>
+
+      <input type="button" id="save-changes">
+      <script>MSG_PREV('value', 'save_rules')</script>
+    </div>
+    <div id="dump-rules-output-block">
+      <textarea id="dump-rules-output" readonly="true" style="display: none;"></textarea>
+    </div>
+  </div>
+
+  <!--
+    Popup menu
+  -->
+  <div id="popup-menu" style="display: none;">
+    <a id="menu-move-up"><script>MSG('menu_move_up')</script></a>
+    <a id="menu-move-down"><script>MSG('menu_move_down')</script></a>
+    <div class="menu-separator"><div></div></div>
+    <a id="menu-dump"><script>MSG('menu_dump')</script></a>
+    <a id="menu-clone"><script>MSG('menu_clone')</script></a>
+    <div class="menu-separator"><div></div></div>
+    <a id="menu-delete"><script>MSG('menu_delete')</script></a>
+  </div>
+  
+  <hr>
+  <div id="browser-settings">
+    <input id="tab-open" name="tab-open" type="checkbox" onclick="save_preferences()">
+    <label for="tab-open"><script>MSG('open_new_tabs_label')</script></label>
+    <br>
+    <input id="show-page-action" name="show-page-action" type="checkbox" onclick="save_preferences()">
+    <label for="show-page-action"><script>MSG('show_icon_label')</script></label>
+  </div>
+
+  <script type="text/javascript" src="options.js"></script>
+
+</body>
+</html>
