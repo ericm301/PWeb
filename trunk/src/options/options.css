@@ -1,0 +1,297 @@
+body, html {
+  padding: 0;
+  margin: 0;
+}
+
+#logo-img {
+  float: left;
+  margin: -2px 5px 0 10px;
+}
+
+#links {
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px 22px;
+}
+#links a {
+  color: #00c;
+}
+
+h2 {
+  padding: 0 5px;
+}
+
+input[readonly="true"],
+textarea[readonly="true"] {
+  background-color: #ddd;
+}
+
+.clear-both {
+  clear: both;
+}
+
+
+/**
+ * Global black list
+ */
+/*
+#black-list {
+  padding: 2px 4px;
+  margin-bottom: 7px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  background-color: #F6F2B7;
+}
+
+#black-list .left {
+  float: left;
+  cursor: pointer;
+  background-image: url(/images/zippy_plus.gif);
+  width: 12px;
+  height: 12px;
+  margin-top: 3px;
+}
+#black-list.expanded .left {
+  background-image: url(/images/zippy_minus.gif);
+}
+
+#black-list .header {
+  white-space: nowrap;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0 16px;
+}
+*/
+
+
+/**
+ * AdBlocker rule
+ */
+.adblocker {
+  background-color: #F6F2B7;
+}
+
+.adblocker .add-new-filter,
+.adblocker .extra-rule {
+  display: none;
+}
+
+.adblocker .filters-container .rule-options {
+  display: none;
+}
+
+
+/**
+ * Rule template
+ */
+.rule-template {
+  position: relative;
+  border-bottom: 1px solid #ccc;
+  padding: 2px 0;
+}
+
+.rule-template.disabled,
+.rule-template.disabled input[type="text"],
+.rule-template.disabled textarea {
+  color: #999;
+}
+
+#rules-container {
+  border-top: 1px solid #ccc;
+}
+
+
+/**
+ * Header block
+ */
+.rule-header {
+  white-space: nowrap;
+  cursor: pointer;
+}
+.rule-header div {
+  cursor: default;
+}
+.rule-expander {
+  cursor: pointer !important;
+}
+
+.rule-header .left {
+  float: left;
+}
+.rule-header .right {
+  float: right;
+  padding: 0 20px;
+}
+.rule-enabled {
+  float: left;
+  margin-right: 5px;
+}
+.rule-name {
+  font-weight: bold;
+}
+.rule-url-pattern {
+  padding-left: 20px;
+}
+
+.rule-options {
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  -webkit-user-select: none;
+}
+.rule-options a {
+  color: #00c;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/**
+ * Expanded block
+ */
+.expanded-block {
+  margin: 0 30px 5px;
+  padding: 0 10px;
+  background-color: white;
+}
+
+.collapsed .expanded-block {
+  display: none;
+}
+
+.expanded-block span {
+  white-space: nowrap;
+}
+
+.input-url-pattern,
+.input-url-exclude {
+  width: 250px;
+}
+
+.filters-block {
+  padding: 1px 10px;
+  outline: 1px solid #ccc;
+}
+.filters-container {
+  border-top: 1px solid #ccc;
+}
+
+.filter {
+  border-bottom: 1px solid #ccc;
+}
+.filter .left {
+}
+.filter .right {
+  float: right;
+}
+
+.intercept-doc-write {
+  margin-left: 0;
+}
+
+.extra-rule {
+  padding-top: 10px;
+  vertical-align: top;
+  text-align: top;
+}
+.extra-rule .left {
+  float: left;
+  width: 15%;
+}
+.extra-rule .right {
+  float: right;
+  width: 85%;
+}
+.extra-rule .help {
+  padding: 2px 4px 0 0;
+}
+.extra-rule textarea {
+  padding: 2px;
+  margin: 0;
+  width: 100%;
+  height: 80px;
+}
+
+
+/**
+ * Footer
+ */
+#footer {
+  padding: 5px;
+}
+#errors {
+  color: red;
+}
+#dump-rules-output-block {
+  padding: 4px;
+}
+#dump-rules-output-block textarea {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100px;
+  font-size: 85%;
+  color: #666;
+}
+
+
+/**
+ * Popup menu
+ */
+#popup-menu {
+  position: absolute;
+  background: #F7F7F7;
+  border: 1px solid #888;
+  text-align: left;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  z-index: 10;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  min-width: 75px;
+}
+#popup-menu a {
+  display: block;
+  padding: 0.2em 0.5em;
+  color: #00c;
+  text-decoration: none;
+  cursor: pointer;
+}
+#popup-menu a:hover {
+  background-color: #36c;
+  color: #fff;
+}
+.menu-separator {
+  display: block;
+  padding: 0.2em 0.5em;
+}
+.menu-separator div {
+  border-top: 1px solid #ccc;
+  font-size: 1px;
+}
+
+#popup-menu.adblocker #menu-move-up,
+#popup-menu.adblocker #menu-move-down,
+#popup-menu.adblocker #menu-delete,
+#popup-menu.adblocker .menu-separator,
+#popup-menu.filter #menu-dump {
+  display: none;
+}
+
+
+/**
+ * Others
+ */
+#browser-settings {
+  padding-bottom: 10px;
+}
+
+.help {
+  font-size: 80%;
+  color: #999;
+}
+.help a {
+  color: #999;
+}

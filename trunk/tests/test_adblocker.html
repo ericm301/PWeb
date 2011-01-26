@@ -1,0 +1,39 @@
+<html> 
+<head>
+  <style>
+    .ok {
+      color: green;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="test-errors"></div>
+<div id="test-container" style="display:none;"></div>
+
+<script>
+  var FLAG_IN_TEST = true;
+  var ON_REQUEST_CALLBACK = function(a,b) {};
+  var IS_ON_MODIFIED_EVENT_FIRED = false;
+
+  var chrome = chrome || {};;
+  chrome.extension = chrome.extension || {};
+  chrome.extension.onRequest = chrome.extension.onRequest || {};
+  chrome.extension.onRequest.addListener = function(func) { ON_REQUEST_CALLBACK = func; };
+
+  chrome.extension.sendRequest = function(msg) {
+    IS_ON_MODIFIED_EVENT_FIRED = msg['modifiedEvent'];
+  };
+
+</script>
+<script src="../src/content/main.js"></script>
+
+<script src="test_adblocker.js"></script>
+
+</body>
+</html>
