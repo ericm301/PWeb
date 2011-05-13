@@ -1,0 +1,302 @@
+{
+  "extension_name": {
+    "message": "Personalized Web",
+    "description": "Extension name."
+  },
+
+  "extension_description": {
+    "message": "Tweak your favorite web pages on the fly! Also a perfect customizable AdBlocker.",
+    "description": "Extension description."
+  },
+
+  "page_action_title": {
+    "message": "Modified by PersonalizedWeb. Click to reload with no modifications.",
+    "description": "Default page action title."
+  },
+
+  "options_title": {
+    "message": "Personalized Web Options",
+    "description": "Title of the extension's options page."
+  },
+
+  "link_regexp_docs": {
+    "message": "RegExp docs",
+    "description": "Title of the link to a manual on RegExp."
+  },
+
+  "link_forum": {
+    "message": "Forum",
+    "description": "Title of the link to a discussion forum (Google Groups)."
+  },
+
+  "link_gallery": {
+    "message": "Gallery page",
+    "description": "Title of the link to a gallery page."
+  },
+
+  "logo_tooltip": {
+    "message": "Drag this image to the bookmarks bar",
+    "description": "Tooltip text for the logo image on the Options page."
+  },
+
+  "rule_enabler_tooltip": {
+    "message": "Whether the rule is active",
+    "description": "Tooltip text for a check box that enables/disables a PWeb rule."
+  },
+
+  "popup_menu_link": {
+    "message": "$more_start$more$more_end$ $arrow$",
+    "description": "Link to open a popup menu for PWeb rules and/or filters.",
+    "placeholders": {
+      "more_start": {
+        "content": "<u>"
+      },
+      "more_end": {
+        "content": "</u>"
+      },
+      "arrow": {
+        "content": "<small>&#9660;</small>"
+      }
+    }
+  },
+
+  "regexp_input_tooltip": {
+    "message": "RegExp",
+    "description": "Tooltip text on input fields that are to accept a regular expression."
+  },
+
+  "text_input_tooltip": {
+    "message": "Text (comma separated)",
+    "description": "Tooltip text on input fields that are to accept a (comma separated) text value."
+  },
+
+  "rule_name_label": {
+    "message": "Rule name:",
+    "description": "Text label preceding rules' Name input field."
+  },
+
+  "match_urls_label": {
+    "message": "Match URLs:",
+    "description": "Text label preceding rules' Match URLs input field."
+  },
+
+  "exclude_urls_label": {
+    "message": "Exclude URLs:",
+    "description": "Text label preceding rules' Exclude URLs input field."
+  },
+
+  "intercept_doc_write_label": {
+    "message": "Try to prevent web pages from injecting <i>iframe</i>, <i>object</i>, <i>embed</i> and <i>script</i> DOM nodes via JavaScript's <i>document.write()</i> calls.",
+    "description": "Text label for the option to intercept document.write() calls."
+  },
+
+  "intercept_doc_write_tooltip": {
+    "message": "This will not only remove some ads, but also will decrease page load time!",
+    "description": "Tooltip text for the option to intercept document.write() calls."
+  },
+
+  "removers_label": {
+    "message": "Removers:",
+    "description": "Text label preceding Remover rules block."
+  },
+
+  "remover_tags_label": {
+    "message": "Tag(s):",
+    "description": "Text label preceding Remover rules' Tags input field."
+  },
+
+  "remover_attr_label": {
+    "message": "Attribute:",
+    "description": "Text label preceding Remover rules' Attribute input field."
+  },
+
+  "remover_value_label": {
+    "message": "Value:",
+    "description": "Text label preceding Remover rules' Value input field."
+  },
+
+  "add_new_remover": {
+    "message": "Add new remover",
+    "description": "Button's label to add a new Remover rule."
+  },
+
+  "add_css_label": {
+    "message": "Add CSS:",
+    "description": "Text label preceding rules' Add CSS input field."
+  },
+
+  "add_html_label": {
+    "message": "Add HTML:",
+    "description": "Text label preceding rules' Add HTML input field."
+  },
+
+  "add_html_help": {
+    "message": "&lt;script&gt; tags executed in the context of the web page",
+    "description": "Help text displayed under the \"Add HTML\" input field."
+  },
+  
+  "add_js_label": {
+    "message": "Add JavaScript:",
+    "description": "Text label preceding rules' Add JavaScript input field."
+  },
+
+  "add_js_help": {
+    "message": "Executed in the context of the $link_start$content script$link_end$",
+    "description": "Help text displayed under the \"Add JavaScript\" input field.",
+    "placeholders": {
+      "link_start": {
+        "content": "$1",
+        "example": "<a>"
+      },
+      "link_end": {
+        "content": "$2",
+        "example": "</a>"
+      }
+    }
+  },
+
+  "add_new_rule": {
+    "message": "Add new rule",
+    "description": "Button's label to add a new Rule."
+  },
+
+  "load_dumped_rules": {
+    "message": "Load dump",
+    "description": "Button's label to load previously dumped rules."
+  },
+
+  "dump_all_rules": {
+    "message": "Dump all rules",
+    "description": "Button's label to dump all rules."
+  },
+
+  "save_rules": {
+    "message": "Save",
+    "description": "Button's label to save all rules."
+  },
+
+  "menu_move_up": {
+    "message": "Move up",
+    "description": "Menu option to move a rule/filter up."
+  },
+
+  "menu_move_down": {
+    "message": "Move down",
+    "description": "Menu option to move a rule/filter down."
+  },
+
+  "menu_dump": {
+    "message": "Dump",
+    "description": "Menu option to dump a rule."
+  },
+
+  "menu_clone": {
+    "message": "Clone",
+    "description": "Menu option to clone a rule/filter."
+  },
+
+  "menu_delete": {
+    "message": "Delete",
+    "description": "Menu option to delete a rule/filter."
+  },
+
+  "open_new_tabs_label": {
+    "message": "Open new tabs next to the right of the current one",
+    "description": "Text label preceding a corresponding checkbox."
+  },
+
+  "show_icon_label": {
+    "message": "Show icon in the address bar for modified web pages",
+    "description": "Text label preceding a corresponding checkbox."
+  },
+
+  "should_save_changes": {
+    "message": "You should save the changes first. Save changes?",
+    "description": "A message that is should to the user when the changes should be saved first before performing an action."
+  },
+
+  "save_changes": {
+    "message": "Save changes?",
+    "description": "A message to ask the user whether to save the changes or not."
+  },
+
+  "discard_changes": {
+    "message": "You have unsaved changes. Discard the changes?",
+    "description": "A message to ask the user whether to discard the changes or not."
+  },
+
+  "enter_dump_prompt": {
+    "message": "Enter dumped rules:",
+    "description": "A message to prompt the user to enter previously dumped rules."
+  },
+
+  "rule_name_noname": {
+    "message": "<noname>",
+    "description": "Placeholder for an unnamed (newly created) rule."
+  },
+
+  "error_empty_match_regex": {
+    "message": "Error: Empty \"Match URLs\" RegExp in rule \"$rule_name$\". The rule will be ignored.",
+    "description": "Error message for an empty regular expression.",
+    "placeholders": {
+      "rule_name": {
+        "content": "$1",
+        "example": "<noname>"
+      }
+    }
+  },
+
+  "error_invalid_match_regex": {
+    "message": "Error: Invalid \"Match URLs\" RegExp in rule \"$rule_name$\"",
+    "description": "Error message for the match URLs invalid regular expression. Put no dot at the end.",
+    "placeholders": {
+      "rule_name": {
+        "content": "$1",
+        "example": "<noname>"
+      }
+    }
+  },
+
+  "error_invalid_exclude_regex": {
+    "message": "Error: Invalid \"Exclude URLs\" RegExp in rule \"$rule_name$\"",
+    "description": "Error message for the exclude URLs invalid regular expression. Put no dot at the end.",
+    "placeholders": {
+      "rule_name": {
+        "content": "$1",
+        "example": "<noname>"
+      }
+    }
+  },
+
+  "error_invalid_remover_regex": {
+    "message": "Error: Invalid RegExp in rule \"$rule_name$\", remover #$remover_no$",
+    "description": "Error message for the exclude URLs invalid regular expression. Put no dot at the end.",
+    "placeholders": {
+      "rule_name": {
+        "content": "$1",
+        "example": "<noname>"
+      },
+      "remover_no": {
+        "content": "$2",
+        "example": "5"
+      }
+    }
+  },
+
+  "error_json_parse": {
+    "message": "Failed to parse the JSON:\n\n$details$",
+    "description": "Error message to alert the user for an invalid JSON.",
+    "placeholders": {
+      "details": {
+        "content": "$1",
+        "example": "JSON value *OR* JSON parse exception"
+      }
+    }
+  },
+
+
+  
+  
+  
+  "dummy": {"message": "dummy"}
+}

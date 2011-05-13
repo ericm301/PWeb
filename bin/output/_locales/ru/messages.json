@@ -1,0 +1,302 @@
+﻿{
+  "extension_name": {
+    "message": "Персонализированный Веб",
+    "description": "Extension name."
+  },
+
+  "extension_description": {
+    "message": "Позволяет редактировать любую веб страницу на лету! В частности, очень эффективен для блокировки рекламы.",
+    "description": "Extension description."
+  },
+
+  "page_action_title": {
+    "message": "Страница модифицирована \"Персонализированным Вебом\". Нажмите, чтобы перегрузить страницу без модификаций.",
+    "description": "Default page action title."
+  },
+
+  "options_title": {
+    "message": "Персонализированный Веб: Настройки",
+    "description": "Title of the extension's options page."
+  },
+
+  "link_regexp_docs": {
+    "message": "Доки по рег.выражениям",
+    "description": "Title of the link to a manual on RegExp."
+  },
+
+  "link_forum": {
+    "message": "Форум",
+    "description": "Title of the link to a discussion forum (Google Groups)."
+  },
+
+  "link_gallery": {
+    "message": "Галерея",
+    "description": "Title of the link to a gallery page."
+  },
+
+  "logo_tooltip": {
+    "message": "Можно перетащить эту иконку на панель закладок ",
+    "description": "Tooltip text for the logo image on the Options page."
+  },
+
+  "rule_enabler_tooltip": {
+    "message": "Вкл./выкл. данное правило",
+    "description": "Tooltip text for a check box that enables/disables a PWeb rule."
+  },
+
+  "popup_menu_link": {
+    "message": "$more_start$опции$more_end$ $arrow$",
+    "description": "Link to open a popup menu for PWeb rules and/or filters.",
+    "placeholders": {
+      "more_start": {
+        "content": "<u>"
+      },
+      "more_end": {
+        "content": "</u>"
+      },
+      "arrow": {
+        "content": "<small>&#9660;</small>"
+      }
+    }
+  },
+
+  "regexp_input_tooltip": {
+    "message": "Регулярное выражение",
+    "description": "Tooltip text on input fields that are to accept a regular expression."
+  },
+
+  "text_input_tooltip": {
+    "message": "Текст (значения перечислять через запятую)",
+    "description": "Tooltip text on input fields that are to accept a (comma separated) text value."
+  },
+
+  "rule_name_label": {
+    "message": "Название правила:",
+    "description": "Text label preceding rules' Name input field."
+  },
+
+  "match_urls_label": {
+    "message": "Применять для URLs:",
+    "description": "Text label preceding rules' Match URLs input field."
+  },
+
+  "exclude_urls_label": {
+    "message": "Исключить URLs:",
+    "description": "Text label preceding rules' Exclude URLs input field."
+  },
+
+  "intercept_doc_write_label": {
+    "message": "Перехватывать теги <i>iframe</i>, <i>object</i>, <i>embed</i> и <i>script</i> при вызове функции <i>document.write()</i>.",
+    "description": "Text label for the option to intercept document.write() calls."
+  },
+
+  "intercept_doc_write_tooltip": {
+    "message": "Данная эвристика не только эффективно борется с рекламой, но и значительно уменьшает время загрузки веб страниц!",
+    "description": "Tooltip text for the option to intercept document.write() calls."
+  },
+
+  "removers_label": {
+    "message": "Фильтры для удаления DOM элементов:",
+    "description": "Text label preceding Remover rules block."
+  },
+
+  "remover_tags_label": {
+    "message": "Теги:",
+    "description": "Text label preceding Remover rules' Tags input field."
+  },
+
+  "remover_attr_label": {
+    "message": "Атрибуты:",
+    "description": "Text label preceding Remover rules' Attribute input field."
+  },
+
+  "remover_value_label": {
+    "message": "Значения:",
+    "description": "Text label preceding Remover rules' Value input field."
+  },
+
+  "add_new_remover": {
+    "message": "Новый фильтр",
+    "description": "Button's label to add a new Remover rule."
+  },
+
+  "add_css_label": {
+    "message": "Добавлять CSS:",
+    "description": "Text label preceding rules' Add CSS input field."
+  },
+
+  "add_html_label": {
+    "message": "Добавлять HTML:",
+    "description": "Text label preceding rules' Add HTML input field."
+  },
+
+  "add_html_help": {
+    "message": "&lt;script&gt; теги исполняются в контексте веб страницы",
+    "description": "Help text displayed under the \"Add HTML\" input field."
+  },
+  
+  "add_js_label": {
+    "message": "Добавлять JavaScript:",
+    "description": "Text label preceding rules' Add JavaScript input field."
+  },
+
+  "add_js_help": {
+    "message": "Код исполняется в контексте $link_start$расширения$link_end$",
+    "description": "Help text displayed under the \"Add JavaScript\" input field.",
+    "placeholders": {
+      "link_start": {
+        "content": "$1",
+        "example": "<a>"
+      },
+      "link_end": {
+        "content": "$2",
+        "example": "</a>"
+      }
+    }
+  },
+
+  "add_new_rule": {
+    "message": "Новое правило ",
+    "description": "Button's label to add a new Rule."
+  },
+
+  "load_dumped_rules": {
+    "message": "Загрузить дамп",
+    "description": "Button's label to load previously dumped rules."
+  },
+
+  "dump_all_rules": {
+    "message": "Дамп всех правил",
+    "description": "Button's label to dump all rules."
+  },
+
+  "save_rules": {
+    "message": "Сохранить",
+    "description": "Button's label to save all rules."
+  },
+
+  "menu_move_up": {
+    "message": "Вверх",
+    "description": "Menu option to move a rule/filter up."
+  },
+
+  "menu_move_down": {
+    "message": "Вниз",
+    "description": "Menu option to move a rule/filter down."
+  },
+
+  "menu_dump": {
+    "message": "Дамп",
+    "description": "Menu option to dump a rule."
+  },
+
+  "menu_clone": {
+    "message": "Клонировать",
+    "description": "Menu option to clone a rule/filter."
+  },
+
+  "menu_delete": {
+    "message": "Удалить",
+    "description": "Menu option to delete a rule/filter."
+  },
+
+  "open_new_tabs_label": {
+    "message": "Открывать новые табы справа от текущей страницы",
+    "description": "Text label preceding a corresponding checkbox."
+  },
+
+  "show_icon_label": {
+    "message": "Показывать иконку в адрес-баре на модифицированных страницах",
+    "description": "Text label preceding a corresponding checkbox."
+  },
+
+  "should_save_changes": {
+    "message": "Для продолжения, необходимо сохранить правила. Сохранить правила?",
+    "description": "A message that is should to the user when the changes should be saved first before performing an action."
+  },
+
+  "save_changes": {
+    "message": "Сохранить правила?",
+    "description": "A message to ask the user whether to save the changes or not."
+  },
+
+  "discard_changes": {
+    "message": "Внимание! Изменения не сохранены. Продолжить без сохранения?",
+    "description": "A message to ask the user whether to discard the changes or not."
+  },
+
+  "enter_dump_prompt": {
+    "message": "Введите дамп правил:",
+    "description": "A message to prompt the user to enter previously dumped rules."
+  },
+
+  "rule_name_noname": {
+    "message": "<Безымянный>",
+    "description": "Placeholder for an unnamed (newly created) rule."
+  },
+
+  "error_empty_match_regex": {
+    "message": "Ошибка: Пустое значение \"Применять для URLs\" для правила \"$rule_name$\". Правило будет проигнорировано.",
+    "description": "Error message for an empty regular expression.",
+    "placeholders": {
+      "rule_name": {
+        "content": "$1",
+        "example": "<noname>"
+      }
+    }
+  },
+
+  "error_invalid_match_regex": {
+    "message": "Ошибка: Неверное регулярное выражение \"Применять для URLs\" для правила \"$rule_name$\"",
+    "description": "Error message for the match URLs invalid regular expression. Put no dot at the end.",
+    "placeholders": {
+      "rule_name": {
+        "content": "$1",
+        "example": "<noname>"
+      }
+    }
+  },
+
+  "error_invalid_exclude_regex": {
+    "message": "Ошибка: Неверное регулярное выражение \"Исключить URLs\" для правила \"$rule_name$\"",
+    "description": "Error message for the exclude URLs invalid regular expression. Put no dot at the end.",
+    "placeholders": {
+      "rule_name": {
+        "content": "$1",
+        "example": "<noname>"
+      }
+    }
+  },
+
+  "error_invalid_remover_regex": {
+    "message": "Ошибка: Неверное регулярное выражение для правила \"$rule_name$\", фильтр #$remover_no$",
+    "description": "Error message for the exclude URLs invalid regular expression. Put no dot at the end.",
+    "placeholders": {
+      "rule_name": {
+        "content": "$1",
+        "example": "<noname>"
+      },
+      "remover_no": {
+        "content": "$2",
+        "example": "5"
+      }
+    }
+  },
+
+  "error_json_parse": {
+    "message": "Ошибка при разборе JSON объекта:\n\n$details$",
+    "description": "Error message to alert the user for an invalid JSON.",
+    "placeholders": {
+      "details": {
+        "content": "$1",
+        "example": "JSON value *OR* JSON parse exception"
+      }
+    }
+  },
+
+
+  
+  
+  
+  "dummy": {"message": "dummy"}
+}
