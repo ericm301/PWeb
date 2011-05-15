@@ -3,4 +3,4 @@
  * @author Anadan (aaafwd@gmail.com)
  */
 
-function ba(){this.a={}};
+function ba(){this.b={}};

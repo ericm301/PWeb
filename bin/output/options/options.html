@@ -32,7 +32,7 @@
   </script>
 </head>
 
-<body onload="restore_preferences()">
+<body>
   <a id="logo-link" href="/options/options.html">
     <img id="logo-img" src="/images/32x32.png">
     <script>MSG_PREV('title', 'logo_tooltip')</script>
@@ -233,10 +233,10 @@
   
   <hr>
   <div id="browser-settings">
-    <input id="tab-open" name="tab-open" type="checkbox" onclick="save_preferences()">
+    <input id="tab-open" name="tab-open" type="checkbox">
     <label for="tab-open"><script>MSG('open_new_tabs_label')</script></label>
     <br>
-    <input id="show-page-action" name="show-page-action" type="checkbox" onclick="save_preferences()">
+    <input id="show-page-action" name="show-page-action" type="checkbox">
     <label for="show-page-action"><script>MSG('show_icon_label')</script></label>
   </div>
 

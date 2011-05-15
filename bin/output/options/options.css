@@ -300,3 +300,15 @@ textarea[readonly="true"] {
 .help a {
   color: #999;
 }
+
+
+/**
+ * Highlights.
+ */
+.highlight {
+    -webkit-animation: "fadeout" 3s 0s;
+}
+@-webkit-keyframes fadeout {
+    from {background-color: rgb(255, 255, 120); }
+    to { background-color: white; }
+}
