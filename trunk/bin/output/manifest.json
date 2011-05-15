@@ -1,7 +1,7 @@
 {
   "name": "__MSG_extension_name__",
   "description": "__MSG_extension_description__",
-  "version": "1.6.2.1001",
+  "version": "1.8",
   "background_page": "background/background.html",
   "options_page": "options/options.html",
   "default_locale": "en",

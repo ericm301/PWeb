@@ -3,30 +3,6 @@
  * @author Anadan (aaafwd@gmail.com)
  */
 
-var preferences = new Preferences();
-
-// Saves preferences to localStorage.
-function save_preferences() {
-  var tabOpenElm = dom.$('tab-open');
-  preferences.setOpenTabsToTheRight(!!tabOpenElm.checked);
-
-  var showPageActionElm = dom.$('show-page-action');
-  preferences.setShowPageAction(!!showPageActionElm.checked);
-}
-window['save_preferences'] = save_preferences;
-
-// Restores select box state to saved value from localStorage.
-function restore_preferences() {
-  var tabOpenElm = dom.$('tab-open');
-  tabOpenElm.checked = !!preferences.getOpenTabsToTheRight();
-
-  var showPageActionElm = dom.$('show-page-action');
-  showPageActionElm.checked = !!preferences.getShowPageAction();
-}
-window['restore_preferences'] = restore_preferences;
-
-//============================================================================
-
 /**
  * @constructor
  */
@@ -38,6 +14,12 @@ var OptionsLayout = function() {
   this.saved_ = true;
 
   /**
+   * @type {!Preferences}
+   * @private
+   */
+  this.preferences_ = new Preferences();
+
+  /**
    * @type {?Node}
    * @private
    */
@@ -45,6 +27,7 @@ var OptionsLayout = function() {
 
   this.setSaved_(true);
   this.initialize_();
+  this.display(this.preferences_.getRulesJson(), true);
 };
 
 
@@ -84,44 +67,35 @@ OptionsLayout.prototype.initialize_ = function() {
   /** @type {!OptionsLayout} */
   var self = this;
 
-  var rulesContainer = dom.$('rules-container');
-  var ruleTemplateElm = dom.$('rule-template');
+  var callback = function() {
+    self.onSaveBehaviorPreferences_();
+  };
+  dom.$('tab-open').addEventListener('click', callback, false);
+  dom.$('show-page-action').addEventListener('click', callback, false);
 
-  var addNewRuleLink = dom.$('add-new-rule');
-  addNewRuleLink.addEventListener('click', function() {
-    var ruleElm = dom.clone(ruleTemplateElm);
-    self.setupRuleElement_(ruleElm,
-      /** @type {!pweb.Rule} */ ({'enabled': true, 'urlRegex': '^http://'}));
-    rulesContainer.appendChild(ruleElm);
+  dom.$('add-new-rule').addEventListener('click', function() {
+    self.onAddNewRule_();
+  }, false);
 
-    self.setSaved_(false);
-
-    dom.classes.remove(ruleElm, OptionsLayout.Classes_.COLLAPSED);
-    dom.classes.add(ruleElm, OptionsLayout.Classes_.EXPANDED);
-    window.scrollTo(0, ruleElm.offsetTop);
-
-    var inputRuleNameElm = dom.$$('input-rule-name', ruleElm)[0];
-    inputRuleNameElm.select();
-  }, true);
-
-  var saveChangesElm = dom.$('save-changes');
-  saveChangesElm.addEventListener('click', function() {
+  dom.$('save-changes').addEventListener('click', function() {
     self.onSave_();
-  }, true);
+  }, false);
 
-  var dumpAllRulesElm = dom.$('dump-rules');
-  dumpAllRulesElm.addEventListener('click', function() {
+  dom.$('dump-rules').addEventListener('click', function() {
     self.onDumpAllRules_();
-  }, true);
+  }, false);
 
-  var loadDumpedRulesElm = dom.$('load-dumped-rules');
-  loadDumpedRulesElm.addEventListener('click', function() {
+  dom.$('load-dumped-rules').addEventListener('click', function() {
     self.onLoadDumpedRules_();
-  }, true);
+  }, false);
 
-  rulesContainer.addEventListener('change', function() {
+  dom.$('rules-container').addEventListener('change', function() {
     self.setSaved_(false);
-  }, true);
+  }, false);
+
+  window.addEventListener('load', function() {
+    self.onLoadBehaviorPreferences_();
+  }, false);
 
   // Keydown in capture phase.
   window.addEventListener('keydown', function(e) {
@@ -166,12 +140,36 @@ OptionsLayout.prototype.initialize_ = function() {
 
   window.addEventListener('click', function(e) {
     self.onClickHandler_(e);
-  }, true);
+  }, false);
 
   window.addEventListener('resize', function() {
     self.lastPopupMenuMoreElm_ = null; // Close the popup menu.
     self.repositionPopupMenu_();
-  }, true);
+  }, false);
+};
+
+
+/**
+ * @private
+ */
+OptionsLayout.prototype.onSaveBehaviorPreferences_ = function() {
+  var tabOpenElm = dom.$('tab-open');
+  this.preferences_.setOpenTabsToTheRight(!!tabOpenElm.checked);
+
+  var showPageActionElm = dom.$('show-page-action');
+  this.preferences_.setShowPageAction(!!showPageActionElm.checked);
+};
+
+
+/**
+ * @private
+ */
+OptionsLayout.prototype.onLoadBehaviorPreferences_ = function() {
+  var tabOpenElm = dom.$('tab-open');
+  tabOpenElm.checked = !!this.preferences_.getOpenTabsToTheRight();
+
+  var showPageActionElm = dom.$('show-page-action');
+  showPageActionElm.checked = !!this.preferences_.getShowPageAction();
 };
 
 
@@ -201,12 +199,37 @@ OptionsLayout.prototype.display = function(rulesJson, opt_verifyRules) {
 /**
  * @private
  */
+OptionsLayout.prototype.onAddNewRule_ = function() {
+  var rulesContainer = dom.$('rules-container');
+  var ruleTemplateElm = dom.$('rule-template');
+
+  var ruleElm = dom.clone(ruleTemplateElm);
+  this.setupRuleElement_(ruleElm,
+    /** @type {!pweb.Rule} */ ({'enabled': true, 'urlRegex': '^http://'}));
+  rulesContainer.appendChild(ruleElm);
+
+  this.setSaved_(false);
+
+  dom.classes.remove(ruleElm, OptionsLayout.Classes_.COLLAPSED);
+  dom.classes.add(ruleElm, OptionsLayout.Classes_.EXPANDED);
+  window.scrollTo(0, ruleElm.offsetTop);
+
+  this.highlightElement_(ruleElm);
+
+  var inputRuleNameElm = dom.$$('input-rule-name', ruleElm)[0];
+  inputRuleNameElm.select();
+};
+
+
+/**
+ * @private
+ */
 OptionsLayout.prototype.onDumpAllRules_ = function() {
   if (!this.checkSaved(dom.getMsg('should_save_changes'))) {
     return;
   }
 
-  var rulesJson = preferences.getRulesJson();
+  var rulesJson = this.preferences_.getRulesJson();
   this.dumpRules_(rulesJson);
 };
 
@@ -268,7 +291,7 @@ OptionsLayout.prototype.loadDumpedRules_ = function(q) {
       alert(dom.getMsg('error_json_parse', '' + e));
     }
     if (newRules) {
-      var rulesJson = preferences.getRulesJson();
+      var rulesJson = this.preferences_.getRulesJson();
       rulesJson = rulesJson.concat(newRules);
 
       this.display(rulesJson);
@@ -281,9 +304,20 @@ OptionsLayout.prototype.loadDumpedRules_ = function(q) {
 /**
  * @private
  */
+OptionsLayout.prototype.highlightElement_ = function(elm) {
+  dom.classes.remove(elm, "highlight");
+  window.setTimeout(function() {
+    dom.classes.add(elm, "highlight");
+  }, 0)
+};
+
+
+/**
+ * @private
+ */
 OptionsLayout.prototype.onSave_ = function() {
   var result = this.getAndVerifyDisplayedRules_();
-  preferences.setRulesJson(result);
+  this.preferences_.setRulesJson(result);
   this.setupAllRuleElementHeaders_();
   this.setSaved_(true);
 };
@@ -505,13 +539,13 @@ OptionsLayout.prototype.setupAdBlockerRuleElement_ = function(ruleElm, isAdBlock
     for (var j = 0, elm; elm = elms[j]; ++j) {
       var isElementMutable = dom.classes.hasAny(elm, [
         OptionsLayout.Classes_.RULE_URL_PATTERN,
-        OptionsLayout.Classes_.RULE_EXCLUDE_URL_PATTERN
+        OptionsLayout.Classes_.RULE_EXCLUDE_URL_PATTERN,
+        'rule-enabled'
       ]);
 
       if (!isElementMutable) {
         dom.attribute.enable(elm, 'readonly', isAdBlocker);
-
-        if (elm['type'] == 'checkbox' && !dom.classes.has(elm, 'rule-enabled')) {
+        if (elm['type'] == 'checkbox') {
           dom.attribute.enable(elm, 'disabled', isAdBlocker);
         }
       }
@@ -736,6 +770,7 @@ OptionsLayout.prototype.maybeProcessMenuCommand_ = function(id) {
   } else if (id == 'menu-dump') {
     var rule = this.getAndVerifyDisplayedRule_(containerItem);
     this.dumpRules_(rule);
+    window.scrollTo(0, dom.$('dump-rules-output').offsetTop);
     return true;
   } else if (id == 'menu-clone') {
     var clonedItem = dom.clone(containerItem);
@@ -744,6 +779,8 @@ OptionsLayout.prototype.maybeProcessMenuCommand_ = function(id) {
       this.setupAdBlockerRuleElement_(clonedItem, false);
     }
     this.setSaved_(false);
+    window.scrollTo(0, clonedItem.offsetTop);
+    this.highlightElement_(clonedItem);
     return true;
   } else if (id == 'menu-delete') {
     container.removeChild(containerItem);
@@ -815,10 +852,8 @@ OptionsLayout.prototype.checkSaved = function(opt_msg) {
  * @private
  */
 OptionsLayout.prototype.setSaved_ = function(isSaved) {
-  //**/ console.log('setSaved_(' + isSaved + ')');
-
   if (!isSaved) {
-    var savedRulesJson = preferences.getRulesJson();
+    var savedRulesJson = this.preferences_.getRulesJson();
     var currentRulesJson = this.getAndVerifyDisplayedRules_();
 
     if (savedRulesJson.length == currentRulesJson.length &&
@@ -839,7 +874,6 @@ OptionsLayout.prototype.setSaved_ = function(isSaved) {
 //==============================================================================
 (function() {
   var layout = new OptionsLayout();
-  layout.display(preferences.getRulesJson(), true);
 
   window.onbeforeunload = function() {
     if (!layout.isSaved()) {
